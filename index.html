@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuraBolt - Extensions That Think For You</title>
+    <meta name="description" content="NeuraBolt - Intelligent browser extensions powered by AI that think and act for you.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --glow-blue: rgba(59, 130, 246, 0.5);
+            --glow-purple: rgba(139, 92, 246, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background gradient */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            z-index: -2;
+        }
+
+        /* Animated orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .orb1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-purple) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: 5s;
+        }
+
+        .orb3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(100px, -100px) scale(1.1);
+            }
+            50% {
+                transform: translate(-100px, 100px) scale(0.9);
+            }
+            75% {
+                transform: translate(50px, 50px) scale(1.05);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo section */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            position: relative;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px var(--glow-blue));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 30px var(--glow-blue));
+            }
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .brand-name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Main content */
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .tagline {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .description {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        /* Status indicator */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 100px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            transition: all 0.3s ease;
+        }
+
+        .status:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px var(--accent-blue);
+            }
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 5px var(--accent-blue);
+            }
+        }
+
+        .status-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .brand-name {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 1.15rem;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.75rem;
+            }
+
+            .description {
+                font-size: 1.05rem;
+            }
+
+            .status {
+                padding: 0.75rem 1.25rem;
+            }
+
+            .status-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="container">
+        <div class="logo-section">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Brain outline with curved sections -->
+                    <path d="M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z" 
+                          stroke="#3b82f6" 
+                          stroke-width="3" 
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="none"/>
+                    
+                    <!-- Top brain curves -->
+                    <path d="M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15" 
+                          stroke="#3b82f6" 
+                          stroke-width="2.5" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <!-- Brain center line -->
+                    <path d="M50 20 L50 85" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          opacity="0.3"/>
+                    
+                    <!-- Left hemisphere curves -->
+                    <path d="M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <path d="M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <!-- Right hemisphere curves -->
+                    <path d="M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <path d="M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <!-- Bottom brain curves -->
+                    <path d="M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70" 
+                          stroke="#3b82f6" 
+                          stroke-width="2" 
+                          stroke-linecap="round"
+                          fill="none"/>
+                    
+                    <!-- Lightning bolt -->
+                    <path d="M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z" 
+                          fill="#3b82f6" 
+                          stroke="#3b82f6" 
+                          stroke-width="1" 
+                          stroke-linejoin="miter"/>
+                </svg>
+            </div>
+            <h1 class="brand-name">NeuraBolt</h1>
+        </div>
+
+        <div class="hero-content">
+            <h2 class="tagline">Extensions That Think For You</h2>
+            <p class="description">
+                Intelligent browser extensions powered by cutting-edge AI. 
+                Automate your workflow, enhance your browsing, and let NeuraBolt handle the thinking while you focus on what matters.
+            </p>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Currently in development</span>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 NeuraBolt. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add some interactive glow effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.orb').forEach((orb, index) => {
+                const speed = (index + 1) * 0.01;
+                orb.style.transform = `translate(${x * 20 * (index + 1)}px, ${y * 20 * (index + 1)}px)`;
+            });
+        });
+
+        // Add a subtle parallax effect to the logo on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
