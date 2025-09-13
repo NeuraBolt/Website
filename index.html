@@ -7,7 +7,7 @@
     <meta name="description" content="NeuraBolt - Intelligent browser extensions powered by AI that think and act for you.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z' stroke='%234a90ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15' stroke='%234a90ff' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M50 20 L50 85' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' opacity='0.3'/%3E%3Cpath d='M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70' stroke='%234a90ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z' fill='%234a90ff' stroke='%234a90ff' stroke-width='1' stroke-linejoin='miter'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z' stroke='%234a90ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z' fill='%234a90ff' stroke='%234a90ff' stroke-width='1' stroke-linejoin='miter'/%3E%3C/svg%3E">
     
     <style>
         * {
@@ -31,64 +31,82 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: #0f1419;
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Subtle animated background */
-        .bg-gradient {
+        /* Multi-layer animated background */
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
-            z-index: -2;
+            opacity: 1;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Floating orbs for depth */
-        .orb {
-            position: fixed;
+        /* Animated gradient orbs */
+        .gradient-orb {
+            position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: floatOrb 20s infinite ease-in-out;
+        }
+
+        .gradient-orb1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #4a90ff 0%, transparent 70%);
+            top: -300px;
+            right: -200px;
+        }
+
+        .gradient-orb2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #bd61ff 0%, transparent 70%);
+            bottom: -250px;
+            left: -250px;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* Animated dot grid */
+        .dot-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0.15;
-            z-index: -1;
-            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(74, 144, 255, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveDots 30s linear infinite;
         }
 
-        .orb1 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-blue);
-            top: -100px;
-            right: -100px;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .orb2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-purple);
-            bottom: -100px;
-            left: -100px;
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-30px, 30px); }
+        @keyframes moveDots {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
         }
 
         /* Container */
@@ -100,126 +118,169 @@
             z-index: 1;
         }
 
-        /* Header */
+        /* Header with animated logo */
         .header {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            padding: 3rem 0 2rem;
+            gap: 1.5rem;
+            padding: 4rem 0 3rem;
             animation: fadeIn 0.8s ease-out;
+        }
+
+        .logo-container {
+            position: relative;
         }
 
         .logo {
             width: 100px;
             height: 100px;
-            filter: drop-shadow(0 0 20px rgba(74, 144, 255, 0.6)) drop-shadow(0 0 40px rgba(189, 97, 255, 0.3));
-            animation: logo-pulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(74, 144, 255, 0.6));
+            animation: logoPulse 4s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
         }
 
-        @keyframes logo-pulse {
-            0%, 100% {
-                filter: drop-shadow(0 0 20px rgba(74, 144, 255, 0.6)) drop-shadow(0 0 40px rgba(189, 97, 255, 0.3));
-            }
-            50% {
-                filter: drop-shadow(0 0 30px rgba(74, 144, 255, 0.8)) drop-shadow(0 0 50px rgba(189, 97, 255, 0.4));
-            }
+        @keyframes logoPulse {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(74, 144, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 50px rgba(74, 144, 255, 0.9)); }
         }
+
+        /* Orbiting particles */
+        .orbit-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .orbit-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4a90ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4a90ff;
+        }
+
+        .orbit-dot:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .orbit-dot:nth-child(2) { top: 50%; right: 0; transform: translateY(-50%); }
+        .orbit-dot:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .orbit-dot:nth-child(4) { top: 50%; left: 0; transform: translateY(-50%); }
 
         .brand-name {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 600;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1;
+            letter-spacing: -2px;
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 2rem 0 3rem;
+            padding: 2rem 0 4rem;
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
         .tagline {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: var(--text-tertiary);
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.9),
+                rgba(255, 255, 255, 1),
+                rgba(255, 255, 255, 0.9),
+                rgba(255, 255, 255, 0.3)
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
         }
 
         .description {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
             line-height: 1.6;
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
         }
 
         /* Extensions Grid */
+        .extensions-section {
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
         .extensions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin: 3rem 0;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .extension-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             padding: 1.5rem;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
             text-decoration: none;
             color: var(--text-primary);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .extension-card:hover {
             background: var(--card-hover);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(74, 144, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(74, 144, 255, 0.2);
         }
 
-        .extension-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .extension-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            flex-shrink: 0;
         }
 
-        .extension-icon {
-            width: 40px;
-            height: 40px;
-            padding: 8px;
-            background: linear-gradient(135deg, rgba(74, 144, 255, 0.1), rgba(189, 97, 255, 0.1));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .extension-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
-        .extension-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: url(#iconGradient);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .extension-name {
-            font-size: 1.25rem;
+        .extension-info h3 {
+            font-size: 1.125rem;
             font-weight: 600;
-            color: var(--text-tertiary);
+            margin-bottom: 0.25rem;
         }
 
-        .extension-description {
+        .extension-info p {
             font-size: 0.875rem;
             color: var(--text-secondary);
             line-height: 1.4;
@@ -227,13 +288,13 @@
 
         /* Pro Section */
         .pro-section {
-            margin: 4rem 0;
+            margin: 4rem auto;
             padding: 3rem;
-            background: linear-gradient(135deg, rgba(74, 144, 255, 0.05), rgba(189, 97, 255, 0.05));
-            border: 1px solid rgba(74, 144, 255, 0.2);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            text-align: center;
+            max-width: 1000px;
+            background: linear-gradient(135deg, rgba(74, 144, 255, 0.08), rgba(189, 97, 255, 0.08));
+            border: 1px solid rgba(74, 144, 255, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
             position: relative;
             overflow: hidden;
@@ -242,22 +303,23 @@
         .pro-section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(74, 144, 255, 0.1), transparent);
-            animation: rotate 30s linear infinite;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 144, 255, 0.2), transparent);
+            animation: pulse 4s ease-in-out infinite;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
         }
 
         .pro-header {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 600;
+            text-align: center;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
             -webkit-background-clip: text;
@@ -268,59 +330,74 @@
         }
 
         .pro-subtitle {
+            text-align: center;
             font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             position: relative;
             z-index: 1;
         }
 
         .pro-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
             position: relative;
             z-index: 1;
         }
 
         .pro-feature {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            font-size: 0.875rem;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .pro-feature-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .pro-feature-text {
+            flex: 1;
+            font-size: 0.95rem;
+            line-height: 1.5;
             color: var(--text-secondary);
         }
 
-        .pro-feature::before {
-            content: '✓';
-            color: #10b981;
-            font-weight: bold;
-            font-size: 1rem;
+        .pro-feature-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .pro-feature-text em {
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .pro-cta {
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .pro-button {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.25rem;
-            padding: 1rem 3rem;
+            gap: 0.5rem;
+            padding: 1.25rem 3rem;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             color: white;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.125rem;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
 
         .pro-button::before {
@@ -330,32 +407,30 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .pro-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(74, 144, 255, 0.4);
         }
 
         .pro-button:hover::before {
             left: 100%;
         }
 
-        .pro-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(74, 144, 255, 0.3);
-        }
-
         .pro-price {
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             opacity: 0.95;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 3rem 0 2rem;
+            padding: 4rem 0 2rem;
             color: var(--text-secondary);
             font-size: 0.875rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
         }
 
         .footer a {
@@ -370,18 +445,14 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -391,17 +462,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+            }
+
             .brand-name {
                 font-size: 3rem;
             }
 
             .tagline {
                 font-size: 2rem;
-            }
-
-            .logo {
-                width: 80px;
-                height: 80px;
             }
 
             .extensions-grid {
@@ -411,108 +481,93 @@
             .pro-features {
                 grid-template-columns: 1fr;
             }
-
-            .pro-section {
-                padding: 2rem 1.5rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    <div class="dots-grid"></div>
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <!-- Multi-layer animated background -->
+    <div class="background-container">
+        <div class="bg-gradient"></div>
+        <div class="gradient-orb gradient-orb1"></div>
+        <div class="gradient-orb gradient-orb2"></div>
+        <div class="dot-grid"></div>
     </div>
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-
-    <!-- SVG Gradients Definition -->
-    <svg width="0" height="0" style="position: absolute;">
-        <defs>
-            <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#4a90ff;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#bd61ff;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-    </svg>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header with animated logo -->
         <div class="header">
-            <div class="logo">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z" 
-                          stroke="#4a90ff" 
-                          stroke-width="3" 
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          fill="none"/>
-                    
-                    <path d="M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15" 
-                          stroke="#4a90ff" 
-                          stroke-width="2.5" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M50 20 L50 85" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          opacity="0.3"/>
-                    
-                    <path d="M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70" 
-                          stroke="#4a90ff" 
-                          stroke-width="2" 
-                          stroke-linecap="round"
-                          fill="none"/>
-                    
-                    <path d="M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z" 
-                          fill="url(#logoGradient)" 
-                          stroke="url(#logoGradient)" 
-                          stroke-width="1" 
-                          stroke-linejoin="miter"/>
-                    
-                    <defs>
-                        <linearGradient id="logoGradient" x1="45" y1="30" x2="60" y2="70">
-                            <stop offset="0%" style="stop-color:#4a90ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#bd61ff;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <div class="logo-container">
+                <div class="orbit-container">
+                    <div class="orbit-dot"></div>
+                    <div class="orbit-dot"></div>
+                    <div class="orbit-dot"></div>
+                    <div class="orbit-dot"></div>
+                </div>
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z" 
+                              stroke="#4a90ff" 
+                              stroke-width="3" 
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              fill="none"/>
+                        
+                        <path d="M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15" 
+                              stroke="#4a90ff" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M50 20 L50 85" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              opacity="0.3"/>
+                        
+                        <path d="M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70" 
+                              stroke="#4a90ff" 
+                              stroke-width="2" 
+                              stroke-linecap="round"
+                              fill="none"/>
+                        
+                        <path d="M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z" 
+                              fill="url(#logoGradient)" 
+                              stroke="url(#logoGradient)" 
+                              stroke-width="1" 
+                              stroke-linejoin="miter"/>
+                        
+                        <defs>
+                            <linearGradient id="logoGradient" x1="45" y1="30" x2="60" y2="70">
+                                <stop offset="0%" style="stop-color:#4a90ff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#bd61ff;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
             </div>
             <h1 class="brand-name">NeuraBolt</h1>
         </div>
@@ -521,51 +576,50 @@
         <div class="hero">
             <h2 class="tagline">Extensions That Think For You</h2>
             <p class="description">
-                Intelligent browser extensions powered by cutting-edge AI. 
-                Automate your workflow, enhance your browsing, and let NeuraBolt handle the thinking while you focus on what matters.
+                Intelligent browser extensions powered by cutting-edge AI. Automate your workflow, enhance your browsing, and let NeuraBolt handle the thinking while you focus on what matters.
             </p>
         </div>
 
-        <!-- Extensions Section - Horizontal Layout -->
+        <!-- Extensions Grid -->
         <div class="extensions-section">
-            <div class="extensions-container">
-                <a href="https://chrome.google.com/webstore" class="extension-item" target="_blank">
+            <div class="extensions-grid">
+                <a href="https://chrome.google.com/webstore" class="extension-card" target="_blank">
                     <div class="extension-logo">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADaElEQVR4nO2ay2sUQRDGv5nZzWYTH/gCFUW8eBJE8OBNL4IgHgTxIngRxIMgeBG8CF4EL/72H3gRBI+CeBE8CIIHQfAgeBDEi2c1PrvZ2cwUM7OzO7M9O93TPTObxPnBQjbT1V1fV1dXVzcQIECAAAECBAgQIECAAAECBAjgHSScRwgh24joIBHtJqJNRLSciOYRkXJ9hoieEdFNIrpCRG+ISKhyg4gIZJ4VQtyXERJC3COivarnWQghrgjhEEKMCyEqGr/tXKnP1Ocq9/NEdFyI7AhCiF+aoychhPhFRHl35QURSSEUE0K8J8vxnoiEEEok6x7FCyGeyJjzaScUsGJPJFyiJRGS2NUnobRKSMBXaGt8VSSUG0lCGcI9NMRRFwkhCrbCK7aFaNsJRagG/IAP0NAQyiqjpzRE1HJOzWy1jLnQMBGX0aEhhLUJYW0GIWQqQgg5IYRYS0TvlBDyhoh2CCHW6DyjiKgZQ4sQwkQNrRSqp6Fw6kQ0SUS/iWiaiKKKnOUfQ8eEEB+VyZP4qD77gBCir7p1uBDippquCCGui7aTvIKI1jddQghhWdWzP9Kzp1MYIxlP8VKUEJKJJh9pWXsZQohBQ2IQe5V+IcRBxo6ypKkiQwhxQTWYbedCCOGuBnSSBhHZRU0lhCTqJoTqxs6mEyGEmC2E2CWE+NjiTvx0Qoi5moW4QYQJG0R0Qgjx1iZJCyFkdXF2rD4hhHihCJ5LRIRlBiG6wnIQGUjIJYQQFw1CSM9RQsjvRAgJGY4Rcc5jhFvs0IwRnGOEGiw2CCPFa4cRnrLZJCRUIKEKmTRJGPAgSUqQxCnP9ySJiwZJYncvT5KmupMkdGmQ0O1BkrSgmyTFekmSXpJUgINtklRAm+1vTGSXJJVYGylKW6q5xOYFRLRTCLFUOe9zzBw06GGqI3VvhtFPUGOZ4i4R3SWiXup6Nuh2fTjSSSXtN6I6+l8VqnMBPRqyp/2uWJJTnqgNW0x7gmRHjdCdC+hRnZqU2cNNJ/rRkLhJuKkKdKRRQghFu0X1JtoKn/dEQr7eE/iCiChafxZJ/4vD/xJeIvp0lKDzLNJxFlE7i6idRaKtfBaJdOJZJNKJZ5EI51kkwhT3/7MIx/9vlTBH5y2RPUQ0orhLbCaiBTxzRVPh0A0UBwgQIECAAAECBAgQIADQ0fgHnOCa6HFeJUIAAAAASUVORK5CYII=" alt="NeuraTabs">
                     </div>
                     <div class="extension-info">
-                        <h3 class="extension-name">NeuraTabs</h3>
-                        <p class="extension-description">Smart tab management with AI-powered auto-grouping, tab snoozing, and intelligent organization</p>
+                        <h3>NeuraTabs</h3>
+                        <p>Smart tab management with AI-powered auto-grouping, tab snoozing, and intelligent organization</p>
                     </div>
                 </a>
 
-                <a href="https://chrome.google.com/webstore" class="extension-item" target="_blank">
+                <a href="https://chrome.google.com/webstore" class="extension-card" target="_blank">
                     <div class="extension-logo">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC8ElEQVR4nO2azWsTQRjGn9nsJk1b/EDBKnrxJIjgxZteiqAeBPEgiBfBi+BF8CJ4EbwIXvztP/AiCB4F8SJ4EARPB0HwIAgeBD9QtLXNx87KbJLNZmd2Z2Y3SesDL4Rkdt55n3femXnnHSBAgAABAgQIECBAgAABAgQIEMAb6DiPcRy3l+O4UxzHHeU4bhfHcRs4jlvFcRzj+sw3juPecxx3k+O4GxzHveI4TiTjeI7jRDJO5Pm7nCOE4wdFnn/Nc/xLJXOT569zHH9fpHjBDzzHv+Y4frnHcfxSkedfc5yQrBEjcfxzSXghhOccJwjiOe6ZAr9kMjzzQiZ8EQwHwiee43/4IqgQJVAifRGsqAtFUOJcIBIQHGAjCBDUOV0I65CqmxQ1wpRBdSNM0QlD42K9DQ1xKjsyVEZaJkV6S7oQpKiQShBCrFIhRK+lQkgxJYRoTiGEJHsyKK8SJiOEGFKA7hXCEBGDqJIkhKguEUIcUSNXy4QQIxomhBgRQmykBBF2EGFUJsFoyxADuYQYVhqnthEjWobcROg+RJAwRKTTQogTBmMETzBGVGKOSk9QGCMyFnOEOzFHDJVMCPET80mIDBXVE9TT5KEeI6xSJQkJRIhXSCQJCUSwEUlCJzJJdHcjSaJ1J0nsYJIkaRkkSdbtJAldKO1MXdoO7aTS2n6nFUvKJYWQABGOkLGgJ8hYJGMJGUvIWELGEjKW1BW5pGgSlzTNJSVoXLIrLim6Wpdce1fCNJeUoAg5kROF3EhOFPIjdWpbvnvHdRHUHfP9LIKlRVBnzEcRHNRZBD1m1JWIniArETYbMRhKRAOJsNnG7OiQE2EamWQFoUZSJp0IySQJNJJOA2K0MjNJSCJJajKIKJvb9UySIGMJUUUSJXJZEpFEEkGURHD8KEn4XZJIWixJxCzKS9Z8dYUr6grXU02FY6hqjbL+1F7dbqiSQqhrbXJdm9x7YQgQIECAAAECBAgQIECAAJiH/wBLGUXFy4x0ngAAAABJRU5ErkJggg==" alt="NeuraSave">
                     </div>
                     <div class="extension-info">
-                        <h3 class="extension-name">NeuraSave</h3>
-                        <p class="extension-description">Intelligent download manager with 2x upscaling, batch downloads, and smart file organization</p>
+                        <h3>NeuraSave</h3>
+                        <p>Intelligent download manager with 2x upscaling, batch downloads, and smart file organization</p>
                     </div>
                 </a>
 
-                <a href="https://chrome.google.com/webstore" class="extension-item" target="_blank">
+                <a href="https://chrome.google.com/webstore" class="extension-card" target="_blank">
                     <div class="extension-logo">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADB0lEQVR4nO2azWsTQRjGn9nNbrJpq/gBRfHjJIjgxZteiqAeBPEgiBfBi+BF8CJ4EbwIXvztP/AiCB4F8SJ4EARP50HwIIgHQVFb2yabzMhs0k2yu7M7szObpLIPvIS0O/O+z7zvzLzzDhAgQIAAAQIECBAgQIAAAQIECOCNhFOQZdlxWZYvyLJ8TpblY7Is75dleY8sy3tkWWayP/NdluX3six/kGX5mizL12VZfi3Lsijx/F1ZFkWJv885wpKMQFGS3igy9bJE05L0UpGldxLPv1Nk6Y0kSa8USXot0/RGoukNRdMbRebvKZr+TpKk57L46zkj8s+U6rlnivKnBE6S5WeSKKaxsvRUEiVJEqWnMs8/kQRRFEX+qUjTU05kQSQAZY3+DwiCyPNPRIEXRIHnH4s8/1gSJJ6Xn4iC6EojeiqKvCSJPC+IPC8JPO+6FzKPC4LAC4LAc4LAc5z4tyRwOWBFQLRPQNx4Ie5CEJdYk2CBFBJCRKQhRGBOBGRRDCGE5ARJtJNMkqRIUx+SgBBhSNOkKJCCGEII2RghJBQlxE4zHiBa6oQQIlJCKIpqCKGJlE0IlQihxJwQSi1CCLEnk5CwImRACKLJVJIwKIS6MiFEd6kQcmyb2U8RI6x0IEKmTASYMolsIoQMuRGEJgkhOmwgQruJCLQQTEUIjSbdSqGdCGqT7pghQrPJ7GBEE2F4wpgObyLkGCNsMAgh2TBCiLf0OeRAhJqxpG4QI2QzEWBDj1FdCdWZhH4EK0TIMxBBuxIaiRDMRNDvAmXTbqFdgGxOFylCJhGChBBCwomAJEmRjQlShOShP5FXBCFEE0LIJFPfJwkJR5MgRUIimSSJJuCJJOFO8riFJKkJSZJwK0mSDNkOoJ3MJ0CKSJJESJKkQxBCKBPx8CjI6/L5aUJwrqMgpcMQ3KRsIdOUJhNTlB3aSeSAJnJAJpEDmhBCKBOJhExCJhJJmchSTASShCQhSfg5ERCJJEmSJJ3W/sYSYN9YEsWNJdI/+D1ltw6i42BUaRzksDA0YN5fOXBggAABAgQIECBAgAABAgQIgLnaP0BbPvBTSyPBAAAAAElFTkSuQmCC" alt="NeuraShot">
                     </div>
                     <div class="extension-info">
-                        <h3 class="extension-name">NeuraShot</h3>
-                        <p class="extension-description">Smart screenshot capture with AI enhancement, automatic cropping, and cloud sync</p>
+                        <h3>NeuraShot</h3>
+                        <p>Smart screenshot capture with AI enhancement, automatic cropping, and cloud sync</p>
                     </div>
                 </a>
 
-                <a href="https://chrome.google.com/webstore" class="extension-item" target="_blank">
+                <a href="https://chrome.google.com/webstore" class="extension-card" target="_blank">
                     <div class="extension-logo">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADQElEQVR4nO2ay0sVURzHP3PvnTvXV76gCEqjB0VRFEVR9KAoiqIoiqIo2rRoUxRFURRFUbRp0aZFixYtWrRo0aJF/0CLFi1atGjRokWLFkEZPX2YuTNz58yZOXPuPS7dD3zhcu+c3+/3/f3OmfM+EBAQEBAQEBAQEBAQEBAQEBAQIE0k3kJKKe0jpbSTlNJBUkqnSCntJ6W0l5RSMfc3P0gp/SSl9IuU0idSSp9IKf0mpTROSul3KU5uTpRcO88RJqW4LI3L4ji5c6T0u5TiX6Q0P1cKE6Q0/yylNCrFx0lpfE5uzE8pjU9JabwvjffIOJnvUPxDauIupPhbiuMYafw1RmLjJDb+MrnxZ4ncAzJTxl9m8nkMkzmOyRLHMXP5OQyT7KTxN8mGpPE3qTBGaWJUFKNUKSZJqRBHSckxCRkQMgBa/AQE+wQ1+wSb5FZIixTb5EKaVJtqSJMaa8rSFKupqayEaYYQChlCyI0htBYiRCQtRIgJ2xO6fRO1PaFwYzJPjRCKOoihsAzIZhADQ8hhGYCl0NsoRxUNzchBzqSgRBgRKlZMoJBCRghRLYTwNMu+VQuhmpoQ6ixCqKMWQp2pCBEihK6rEcI0hFBO6MFCyOGnHfWwpSGwCCFcJgJsFKG+jhtBBuAyg3AH6W7DhJBqN0IogxvBRQjRdRFCDa4Qal0x1Fq8CxE/tws1Fm0LNQy0FZIN6L0iMzJJMNBsQojUsYBAC1CIFGj2UmBEizQrEmGNNOQIISGExJoQUiwEhUiBJjNJOhCsFJVIQaJWigJJUpOQJGqzSYqpRJLUJCZJg40kKV5OklTO5CRJqmzU6gCGyCEJOaS1MQmJkELIhiiEDJECbQOEUMiAlULYZAi2AQaUBgipOQOyQ1FqykJJSQTFPy5LMzlJiVNClCGJlAyhwKkgyJA0vhbmctRKZRD+mBH0QQgFvEQKhiqVRo9KhGhQKo0iiRBcEUJJJYK9zYMRLcNQzpgn6xzKV/hONQfP5XvqnOqnzn37YagtCe1/8XGl+XaT1AEq3wU3pRHe2b2OJaJy6zs2e3NjkTxXaByEuEI+f8pxEJCCvw4ctO/IXC2i6UbmWpGz9j/8PGUdg3Dx4CBZPCT0H74gfRaGOg9D3T0ONevIXCNy1v7Nv9sLCAgICAgICAgICAgICAgICOj/5R+jJ0Ahy3yKKgAAAABJRU5ErkJggg==" alt="NeuraSonic">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADQElEQVR4nO2ay0sVURzHP3PvnTvXV76gCEqjB0VRFEVR9KAoiqIoiqIo2rRoUxRFURRFUbRp0aZFixYtWrRo0aJF/0CLFi1atGjRokWLFkEZPX2YuTNz58yZOXPuPS7dD3zhcu+c3+/3/f3OmfM+EBAQEBAQEBAQEBAQEBAQEBAQIE0k3kJKKe0jpbSTlNJBUkqnSCntJ6W0l5RSMvc3P0gp/SSl9IuU0idSSp9IKf0mpTROSul3KU5uTpRcO88RJqW4LI3L4ji5c6T0u5TiX6Q0P1cKE6Q0/yylNCrFx0lpfE5uzE8pjU9JabwvjffIOJnvUPxDauIupPhbiuMYafw1RmLjJDb+MrnxZ4ncAzJTxl9m8nkMkzmOyRLHMXP5OQyT7KTxN8mGpPE3qTBGaWJUFKNUKSZJqRBHSckxCRkQMgBa/AQE+wQ1+wSb5FZIixTb5EKaVJtqSJMaa8rSFKupqayEaYYQChlCyI0htBYiRCQtRIgJ2xO6fRO1PaFwYzJPjRCKOoihsAzIZhADQ8hhGYCl0NsoRxUNzchBzqSgRBgRKlZMoJBCRghRLYTwNMu+VQuhmpoQ6ixCqKMWQp2pCBEihK6rEcI0hFBO6MFCyOGnHfWwpSGwCCFcJgJsFKG+jhtBBuAyg3AH6W7DhJBqN0IogxvBRQjRdRFCDa4Qal0x1Fq8CxE/tws1Fm0LNQy0FZIN6L0iMzJJMNBsQojUsYBAC1CIFGj2UmBEizQrEmGNNOQIISGExJoQUiwEhUiBJjNJOhCsFJVIQaJWigJJUpOQJGqzSYqpRJLUJCZJg40kKV5OklTO5CRJqmzU6gCGyCEJOaS1MQmJkELIhiiEDJECbQOEUMiAlULYZAi2AQaUBgipOQOyQ1FqykJJSQTFPy5LMzlJiVNClCGJlAyhwKkgyJA0vhbmctRKZRD+mBH0QQgFvEQKhiqVRo9KhGhQKo0iiRBcEUJJJYK9zYMRLcNQzpgn6xzKV/hONQfP5XvqnOqnzn37YagtCe1/8XGl+XaT1AEq3wU3pRHe2b2OJaJy6zs2e3NjkTxXaByEuEI+f8pxEJCCvw4ctO/IXC2i6UbmWpGz9j/8PGUdg3Dx4CBZPCT0H74gfRaGOg9D3T0ONevIXCNy1v7Nv9sLCAgICAgICAgICAgICAgICOj/5R+jJ0Ahy3yKKgAAAABJRU5ErkJggg==" alt="NeuraSonic">
                     </div>
                     <div class="extension-info">
-                        <h3 class="extension-name">NeuraSonic</h3>
-                        <p class="extension-description">Audio enhancement with smart EQ, per-site sound profiles, and advanced playback controls</p>
+                        <h3>NeuraSonic</h3>
+                        <p>Audio enhancement with smart EQ, per-site sound profiles, and advanced playback controls</p>
                     </div>
                 </a>
             </div>
@@ -609,10 +663,12 @@
                 </div>
             </div>
 
-            <a href="https://buy.stripe.com/fZucN54GkfLO9YA9Ah" class="pro-button" target="_blank">
-                <span>Unlock NeuraBolt Pro</span>
-                <span class="pro-price">£0.99/month · Cancel anytime</span>
-            </a>
+            <div class="pro-cta">
+                <a href="https://buy.stripe.com/fZucN54GkfLO9YA9Ah" class="pro-button" target="_blank">
+                    <span>Unlock NeuraBolt Pro</span>
+                    <span class="pro-price">£0.99/month · Cancel anytime</span>
+                </a>
+            </div>
         </div>
 
         <!-- Footer -->
