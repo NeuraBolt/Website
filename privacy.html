@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - NeuraBolt</title>
+    <meta name="description" content="Privacy policies for NeuraBolt browser extensions - NeuraSave, NeuraTabs, NeuraShot, and NeuraSonic.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z' stroke='%230a84ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15' stroke='%230a84ff' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M50 20 L50 85' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' opacity='0.3'/%3E%3Cpath d='M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z' fill='%230a84ff' stroke='%230a84ff' stroke-width='1' stroke-linejoin='miter'/%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0f;
+            --text-primary: #ffffff;
+            --text-secondary: #8e8e93;
+            --accent-blue: #0a84ff;
+            --accent-purple: #5e5ce6;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Title */
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Policy Content */
+        .policy-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .policy-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .policy-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .policy-card h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .policy-card h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .policy-card h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .policy-card p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .policy-card ul {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .policy-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-card strong {
+            color: var(--text-primary);
+        }
+
+        .policy-card em {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .policy-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .policy-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .policy-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo-link">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z" stroke="#0a84ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15" stroke="#0a84ff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path d="M50 20 L50 85" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                        <path d="M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <path d="M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <path d="M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <path d="M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <path d="M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <path d="M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z" fill="#0a84ff" stroke="#0a84ff" stroke-width="1" stroke-linejoin="miter"/>
+                    </svg>
+                </div>
+                <span class="brand-name">NeuraBolt</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="https://buy.stripe.com/fZucN54GkfLO9YA9Ah" class="nav-link" target="_blank">Get Pro</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="page-subtitle">Your privacy is our priority. Learn how each NeuraBolt extension handles your data.</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showPolicy('neurasave')">NeuraSave</button>
+            <button class="tab" onclick="showPolicy('neuratabs')">NeuraTabs</button>
+            <button class="tab" onclick="showPolicy('neurashot')">NeuraShot</button>
+            <button class="tab" onclick="showPolicy('neurasonic')">NeuraSonic</button>
+        </div>
+
+        <!-- NeuraSave Policy -->
+        <div id="neurasave" class="policy-content active">
+            <div class="policy-card">
+                <h1>Privacy Policy for NeuraSave</h1>
+                <p><em>Last Updated: September 2025</em></p>
+
+                <h2>Overview</h2>
+                <p>NeuraSave ("we", "our", or "the extension") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our browser extension.</p>
+
+                <h2>Information We Collect</h2>
+
+                <h3>Information You Provide</h3>
+                <ul>
+                    <li><strong>Email Address</strong>: Only collected if you choose to activate Pro features, used solely for subscription verification</li>
+                    <li><strong>Settings Preferences</strong>: Your chosen file formats, scaling options, and extension settings stored locally in your browser</li>
+                </ul>
+
+                <h3>Automatically Collected Information</h3>
+                <ul>
+                    <li><strong>Download Count</strong>: Number of images downloaded (stored locally, reset daily)</li>
+                    <li><strong>Extension State</strong>: Whether the extension is enabled or disabled</li>
+                    <li><strong>Pro Status</strong>: Whether you have an active Pro subscription</li>
+                </ul>
+
+                <h2>How We Use Information</h2>
+                <p>We use the collected information to:</p>
+                <ul>
+                    <li>Verify Pro subscription status when you provide your email</li>
+                    <li>Save your preferences for a better user experience</li>
+                    <li>Track daily download limits (stored locally only)</li>
+                    <li>Provide and improve extension functionality</li>
+                </ul>
+
+                <h2>Data Storage</h2>
+                <ul>
+                    <li><strong>Local Storage</strong>: All settings and preferences are stored locally in your browser using Chrome's storage API</li>
+                    <li><strong>Sync Storage</strong>: Pro activation status may be synced across your devices if you're signed into Chrome/Edge</li>
+                    <li><strong>No Server Storage</strong>: We do not store or track your browsing history, downloaded images, or personal data on our servers</li>
+                </ul>
+
+                <h2>Information We DON'T Collect</h2>
+                <ul>
+                    <li>Browsing history or activity</li>
+                    <li>Content of images you download</li>
+                    <li>Personal information beyond email (for Pro users only)</li>
+                    <li>Analytics or tracking data</li>
+                    <li>Cookies or similar tracking technologies</li>
+                </ul>
+
+                <h2>Third-Party Services</h2>
+
+                <h3>Stripe</h3>
+                <ul>
+                    <li>Payment processing for Pro subscriptions is handled by Stripe</li>
+                    <li>We never see or store your payment information</li>
+                    <li>Stripe's privacy policy: <a href="https://stripe.com/privacy" target="_blank">https://stripe.com/privacy</a></li>
+                </ul>
+
+                <h3>API Services</h3>
+                <ul>
+                    <li>Pro subscription verification uses our secure API hosted on Vercel</li>
+                    <li>Only your email is sent to verify subscription status</li>
+                    <li>No other personal data is transmitted</li>
+                </ul>
+
+                <h2>Data Security</h2>
+                <ul>
+                    <li>All data is stored locally on your device</li>
+                    <li>Pro verification uses secure HTTPS connections</li>
+                    <li>We implement industry-standard security measures</li>
+                    <li>No sensitive data is transmitted or stored on external servers</li>
+                </ul>
+
+                <h2>Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Delete all local data by uninstalling the extension</li>
+                    <li>Opt-out of Pro features without affecting basic functionality</li>
+                    <li>Request information about data associated with your email (Pro users)</li>
+                    <li>Cancel your subscription at any time</li>
+                </ul>
+
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+
+                <h2>Contact Us</h2>
+                <p>For questions about this Privacy Policy or our privacy practices, please contact us at:</p>
+                <p><strong>Email</strong>: info@neurabolt.ai<br>
+                <strong>Website</strong>: <a href="https://neurabolt.ai">https://neurabolt.ai</a></p>
+
+                <h2>Compliance</h2>
+                <p>This extension complies with:</p>
+                <ul>
+                    <li>Chrome Web Store Developer Program Policies</li>
+                    <li>General Data Protection Regulation (GDPR)</li>
+                    <li>California Consumer Privacy Act (CCPA) where applicable</li>
+                </ul>
+
+                <h2>Data Deletion</h2>
+                <p>To delete all data associated with NeuraSave:</p>
+                <ol>
+                    <li>Uninstall the extension from your browser</li>
+                    <li>This will automatically remove all locally stored data</li>
+                    <li>Pro users can contact support to remove email from our verification system</li>
+                </ol>
+
+                <p><em>By using NeuraSave, you agree to this Privacy Policy.</em></p>
+            </div>
+        </div>
+
+        <!-- NeuraTabs Policy -->
+        <div id="neuratabs" class="policy-content">
+            <div class="policy-card">
+                <h1>NeuraTabs Privacy Policy</h1>
+                <p><em>Last Updated: September 2025</em></p>
+
+                <h2>Your Privacy is Our Priority</h2>
+                <p>NeuraTabs processes all your data locally on your device. We do not collect, store, or transmit your personal information or browsing data to any external servers.</p>
+
+                <h2>What Information We Process</h2>
+
+                <h3>Locally Processed Data (Never Leaves Your Device)</h3>
+                <ul>
+                    <li><strong>Tab Information:</strong> Tab titles, URLs, and favicons are processed locally to organize your tabs into groups</li>
+                    <li><strong>Group Preferences:</strong> Your custom group names and organization preferences</li>
+                    <li><strong>Snooze Settings:</strong> Information about tabs you've snoozed for later</li>
+                </ul>
+
+                <h3>Optional Features</h3>
+                <ul>
+                    <li><strong>OpenAI Integration (Optional):</strong> If you choose to use AI features, you provide your own OpenAI API key. When enabled, only tab titles and domains are sent to OpenAI's servers using your personal API key. We never see or store your API key.</li>
+                    <li><strong>Community Mappings:</strong> Anonymous domain-to-category mappings (e.g., "spotify.com" → "Music") may be shared with our community database to improve categorization for all users. This data contains no personal information.</li>
+                </ul>
+
+                <h2>What We DON'T Do</h2>
+                <ul>
+                    <li>❌ We do NOT collect your browsing history</li>
+                    <li>❌ We do NOT track your personal information</li>
+                    <li>❌ We do NOT sell any data to third parties</li>
+                    <li>❌ We do NOT use your data for advertising</li>
+                    <li>❌ We do NOT use your data for creditworthiness or lending purposes</li>
+                    <li>❌ We do NOT have access to your OpenAI API key or AI queries</li>
+                </ul>
+
+                <h2>Data Storage</h2>
+
+                <h3>Local Storage (On Your Device)</h3>
+                <p>All your personal settings, preferences, and tab organization data are stored locally using Chrome's storage API. This data:</p>
+                <ul>
+                    <li>Remains on your device</li>
+                    <li>Syncs across your devices only if you're signed into Chrome with sync enabled</li>
+                    <li>Is never accessible to us or any third party</li>
+                </ul>
+
+                <h3>Community Database (Anonymous)</h3>
+                <p>Our optional community features use a Supabase database that stores only:</p>
+                <ul>
+                    <li>Domain names and their categories (e.g., "github.com" → "Dev")</li>
+                    <li>Vote counts for categorization accuracy</li>
+                    <li>No user identifiers or personal information</li>
+                </ul>
+
+                <h2>Permissions We Request</h2>
+                <p>NeuraTabs requests the following Chrome permissions:</p>
+                <ul>
+                    <li><strong>tabs:</strong> To read tab information for organization</li>
+                    <li><strong>tabGroups:</strong> To create and manage tab groups</li>
+                    <li><strong>storage:</strong> To save your preferences locally</li>
+                    <li><strong>alarms:</strong> To reopen snoozed tabs at scheduled times</li>
+                    <li><strong>contextMenus:</strong> To add right-click menu options</li>
+                    <li><strong>host_permissions:</strong> To extract favicons and process tab content</li>
+                </ul>
+
+                <h2>NeuraBolt Pro</h2>
+                <p>If you subscribe to NeuraBolt Pro:</p>
+                <ul>
+                    <li>Payment is processed securely through Stripe</li>
+                    <li>We only store your email for subscription management</li>
+                    <li>Your payment information is never stored by us</li>
+                    <li>You can cancel anytime through Stripe's customer portal</li>
+                </ul>
+
+                <h2>Your Rights</h2>
+                <p>Since we don't collect personal data, there's nothing for us to delete or provide. However, you always have the right to:</p>
+                <ul>
+                    <li>Uninstall the extension at any time</li>
+                    <li>Clear your local extension data through Chrome settings</li>
+                    <li>Disable specific features like AI integration</li>
+                    <li>Use the extension in local-only mode</li>
+                </ul>
+
+                <h2>Changes to This Policy</h2>
+                <p>We may update this privacy policy from time to time. Any changes will be reflected in the "Last Updated" date above.</p>
+
+                <h2>Open Source Commitment</h2>
+                <p>We believe in transparency. NeuraTabs' categorization logic and privacy practices are open for review.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this privacy policy or NeuraTabs' privacy practices, please contact us at:</p>
+                <p><strong>Email</strong>: info@neurabolt.ai<br>
+                <strong>Website</strong>: <a href="https://neurabolt.ai">neurabolt.ai</a></p>
+            </div>
+        </div>
+
+        <!-- NeuraShot Policy (Placeholder) -->
+        <div id="neurashot" class="policy-content">
+            <div class="policy-card">
+                <h1>Privacy Policy for NeuraShot</h1>
+                <p><em>Last Updated: September 2025</em></p>
+                <p>Privacy policy for NeuraShot will be added here once provided.</p>
+                <p>For questions about privacy, please contact us at: <strong>info@neurabolt.ai</strong></p>
+            </div>
+        </div>
+
+        <!-- NeuraSonic Policy (Placeholder) -->
+        <div id="neurasonic" class="policy-content">
+            <div class="policy-card">
+                <h1>Privacy Policy for NeuraSonic</h1>
+                <p><em>Last Updated: September 2025</em></p>
+                <p>Privacy policy for NeuraSonic will be added here once provided.</p>
+                <p>For questions about privacy, please contact us at: <strong>info@neurabolt.ai</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 NeuraBolt. All rights reserved. | <a href="/" style="color: var(--text-secondary);">Back to Home</a></p>
+    </footer>
+
+    <script>
+        function showPolicy(extensionId) {
+            // Hide all policies
+            document.querySelectorAll('.policy-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected policy
+            document.getElementById(extensionId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
