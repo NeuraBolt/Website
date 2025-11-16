@@ -91,23 +91,7 @@
             66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-        /* Animated dot grid */
-        .dot-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.15;
-            background-image: radial-gradient(circle, rgba(74, 144, 255, 0.5) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: moveDots 30s linear infinite;
-        }
-
-        @keyframes moveDots {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
-        }
+        /* Removed dot grid for cleaner background */
 
         /* Container */
         .container {
@@ -238,16 +222,10 @@
             margin: 0 auto;
         }
 
-        /* Animated gradient border for cards */
-        @keyframes gradient-rotate {
-            0% { --gradient-angle: 0deg; }
-            100% { --gradient-angle: 360deg; }
-        }
-
-        @property --gradient-angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
+        /* Animated gradient border for cards - Same as Pro Section */
+        @keyframes borderFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
         }
 
         .extension-card {
@@ -265,7 +243,6 @@
             align-items: center;
             text-align: center;
             gap: 1rem;
-            animation: gradient-rotate 4s linear infinite;
         }
 
         .extension-card::before {
@@ -274,14 +251,15 @@
             inset: 0;
             padding: 1px;
             border-radius: 16px;
-            background: conic-gradient(
-                from var(--gradient-angle),
-                var(--accent-blue) 0deg,
-                var(--accent-purple) 90deg,
-                var(--accent-blue) 180deg,
-                var(--accent-purple) 270deg,
-                var(--accent-blue) 360deg
+            background: linear-gradient(90deg, 
+                #4a90ff 0%, 
+                #bd61ff 25%, 
+                #4a90ff 50%, 
+                #bd61ff 75%, 
+                #4a90ff 100%
             );
+            background-size: 200% 100%;
+            animation: borderFlow 3s linear infinite;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -343,51 +321,79 @@
             overflow: hidden;
         }
 
-        /* Pro Section - UPDATED WITH ANIMATED BORDER */
+        /* Pro Section - UPDATED WITH ANIMATED BACKGROUND */
         .pro-section {
             margin: 4rem auto;
             padding: 3rem;
             max-width: 1000px;
-            background: var(--card-bg);
+            background: linear-gradient(
+                135deg,
+                rgba(74, 144, 255, 0.08),
+                rgba(189, 97, 255, 0.06)
+            );
             backdrop-filter: blur(20px);
             border-radius: 20px;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards, gradient-rotate 4s linear infinite;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
             position: relative;
             overflow: hidden;
         }
 
+        /* Animated gradient border for pro section */
         .pro-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            padding: 1px;
+            padding: 1.5px;
             border-radius: 20px;
-            background: conic-gradient(
-                from var(--gradient-angle),
-                var(--accent-blue) 0deg,
-                var(--accent-purple) 90deg,
-                var(--accent-blue) 180deg,
-                var(--accent-purple) 270deg,
-                var(--accent-blue) 360deg
+            background: linear-gradient(90deg, 
+                #4a90ff 0%, 
+                #bd61ff 25%, 
+                #4a90ff 50%, 
+                #bd61ff 75%, 
+                #4a90ff 100%
             );
+            background-size: 200% 100%;
+            animation: borderFlow 3s linear infinite;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             opacity: 0.7;
+            z-index: 1;
         }
 
-        /* Smooth gradient background overlay */
-        .pro-section::after {
-            content: '';
+        @keyframes borderFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* Animated floating glow effect */
+        .pro-glow {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(74, 144, 255, 0.03) 0%,
-                rgba(189, 97, 255, 0.03) 100%
-            );
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 144, 255, 0.3) 0%, transparent 70%);
+            filter: blur(50px);
+            animation: floatGlow 6s ease-in-out infinite;
+            z-index: 0;
             pointer-events: none;
-            border-radius: 20px;
+        }
+
+        .pro-glow:nth-child(1) {
+            top: -100px;
+            left: -100px;
+        }
+
+        .pro-glow:nth-child(2) {
+            bottom: -100px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(189, 97, 255, 0.3) 0%, transparent 70%);
+            animation-delay: -3s;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, 40px); }
+            66% { transform: translate(-20px, 30px); }
         }
 
         .pro-header {
@@ -494,10 +500,10 @@
             opacity: 0.95;
         }
 
-        /* Sticky CTA Button */
+        /* Sticky CTA Button - Top Right */
         .sticky-cta {
             position: fixed;
-            bottom: 2rem;
+            top: 2rem;
             right: 2rem;
             z-index: 1000;
             opacity: 0;
@@ -601,7 +607,7 @@
             }
 
             .sticky-cta {
-                bottom: 1rem;
+                top: 1rem;
                 right: 1rem;
             }
 
@@ -618,7 +624,6 @@
         <div class="bg-gradient"></div>
         <div class="gradient-orb gradient-orb1"></div>
         <div class="gradient-orb gradient-orb2"></div>
-        <div class="dot-grid"></div>
     </div>
 
     <!-- Sticky CTA Button -->
@@ -762,6 +767,10 @@
 
         <!-- Pro Section -->
         <div class="pro-section">
+            <!-- Animated background glows -->
+            <div class="pro-glow"></div>
+            <div class="pro-glow"></div>
+            
             <h3 class="pro-header"><span class="sparkle-emoji">✨</span> NeuraBolt Pro - All tools, one tiny price</h3>
             <p class="pro-subtitle">Transform your browsing experience with premium features</p>
             
