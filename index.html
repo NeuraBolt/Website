@@ -225,7 +225,7 @@
             margin: 0 auto;
         }
 
-        /* Extensions Grid */
+        /* Extensions Grid - UPDATED FOR 4 COLUMNS */
         .extensions-section {
             padding: 4rem 0;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
@@ -233,69 +233,125 @@
 
         .extensions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
-            max-width: 1000px;
             margin: 0 auto;
         }
 
+        /* Animated gradient border for cards */
+        @keyframes gradient-rotate {
+            0% { --gradient-angle: 0deg; }
+            100% { --gradient-angle: 360deg; }
+        }
+
+        @property --gradient-angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
         .extension-card {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            position: relative;
             padding: 1.5rem;
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
             backdrop-filter: blur(10px);
             text-decoration: none;
             color: var(--text-primary);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            animation: gradient-rotate 4s linear infinite;
+        }
+
+        .extension-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: 16px;
+            background: conic-gradient(
+                from var(--gradient-angle),
+                var(--accent-blue) 0deg,
+                var(--accent-purple) 90deg,
+                var(--accent-blue) 180deg,
+                var(--accent-purple) 270deg,
+                var(--accent-blue) 360deg
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
         }
 
         .extension-card:hover {
-            background: var(--card-hover);
-            border-color: rgba(74, 144, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(74, 144, 255, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(74, 144, 255, 0.3);
+        }
+
+        .extension-card:hover::before {
+            opacity: 1;
         }
 
         .extension-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(74, 144, 255, 0.1), rgba(189, 97, 255, 0.1));
+            padding: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .extension-logo img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .extension-info {
+            position: relative;
+            z-index: 1;
         }
 
         .extension-info h3 {
             font-size: 1.125rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .extension-info p {
             font-size: 0.875rem;
             color: var(--text-secondary);
             line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Pro Section */
+        /* Pro Section - UPDATED WITH ANIMATED BORDER */
         .pro-section {
             margin: 4rem auto;
             padding: 3rem;
             max-width: 1000px;
-            background: linear-gradient(135deg, rgba(74, 144, 255, 0.08), rgba(189, 97, 255, 0.08));
-            border: 1px solid rgba(74, 144, 255, 0.3);
-            border-radius: 20px;
+            background: var(--card-bg);
             backdrop-filter: blur(20px);
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards, gradient-rotate 4s linear infinite;
             position: relative;
             overflow: hidden;
         }
@@ -303,17 +359,35 @@
         .pro-section::before {
             content: '';
             position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(74, 144, 255, 0.2), transparent);
-            animation: pulse 4s ease-in-out infinite;
+            inset: 0;
+            padding: 1px;
+            border-radius: 20px;
+            background: conic-gradient(
+                from var(--gradient-angle),
+                var(--accent-blue) 0deg,
+                var(--accent-purple) 90deg,
+                var(--accent-blue) 180deg,
+                var(--accent-purple) 270deg,
+                var(--accent-blue) 360deg
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
+        /* Smooth gradient background overlay */
+        .pro-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(74, 144, 255, 0.03) 0%,
+                rgba(189, 97, 255, 0.03) 100%
+            );
+            pointer-events: none;
+            border-radius: 20px;
         }
 
         .pro-header {
@@ -370,11 +444,6 @@
             font-weight: 600;
         }
 
-        .pro-feature-text em {
-            font-style: italic;
-            opacity: 0.9;
-        }
-
         .pro-cta {
             text-align: center;
             position: relative;
@@ -425,6 +494,49 @@
             opacity: 0.95;
         }
 
+        /* Sticky CTA Button */
+        .sticky-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInSticky 0.5s ease-out 2s forwards;
+        }
+
+        @keyframes fadeInSticky {
+            to { opacity: 1; }
+        }
+
+        .sticky-cta-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .sticky-cta-button::before {
+            content: '✨';
+            font-size: 1.2rem;
+        }
+
+        .sticky-cta-button:hover {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            border-color: transparent;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(74, 144, 255, 0.4);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -461,6 +573,12 @@
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .extensions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -481,6 +599,16 @@
             .pro-features {
                 grid-template-columns: 1fr;
             }
+
+            .sticky-cta {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .sticky-cta-button {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.875rem;
+            }
         }
     </style>
 </head>
@@ -491,6 +619,13 @@
         <div class="gradient-orb gradient-orb1"></div>
         <div class="gradient-orb gradient-orb2"></div>
         <div class="dot-grid"></div>
+    </div>
+
+    <!-- Sticky CTA Button -->
+    <div class="sticky-cta">
+        <a href="https://buy.stripe.com/fZucN54GkfLO9YA9Ah" class="sticky-cta-button" target="_blank">
+            Get NeuraBolt Pro
+        </a>
     </div>
 
     <div class="container">
@@ -589,7 +724,7 @@
                     </div>
                     <div class="extension-info">
                         <h3>NeuraTabs</h3>
-                        <p>Smart tab management with AI-powered auto-grouping, tab snoozing, and intelligent organization</p>
+                        <p>Smart AI-powered tab organization</p>
                     </div>
                 </a>
 
@@ -599,7 +734,7 @@
                     </div>
                     <div class="extension-info">
                         <h3>NeuraSave</h3>
-                        <p>Intelligent download manager with 2x upscaling, batch downloads, and smart file organization</p>
+                        <p>AI-enhanced download manager</p>
                     </div>
                 </a>
 
@@ -609,7 +744,7 @@
                     </div>
                     <div class="extension-info">
                         <h3>NeuraShot</h3>
-                        <p>Smart screenshot capture with AI enhancement, automatic cropping, and cloud sync</p>
+                        <p>Smart screenshot & capture tools</p>
                     </div>
                 </a>
 
@@ -619,7 +754,7 @@
                     </div>
                     <div class="extension-info">
                         <h3>NeuraSonic</h3>
-                        <p>Audio enhancement with smart EQ, per-site sound profiles, and advanced playback controls</p>
+                        <p>Advanced audio enhancement</p>
                     </div>
                 </a>
             </div>
