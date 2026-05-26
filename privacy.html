@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - NeuraBolt</title>
-    <meta name="description" content="Privacy policies for NeuraBolt browser extensions - NeuraSave, NeuraTabs, NeuraShot, and NeuraSonic.">
+    <meta name="description" content="Privacy policies for NeuraBolt browser extensions - NeuraSave, NeuraTabs, NeuraShot, NeuraSonic, and NeuraPulse.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z' stroke='%230a84ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15' stroke='%230a84ff' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M50 20 L50 85' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' opacity='0.3'/%3E%3Cpath d='M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z' fill='%230a84ff' stroke='%230a84ff' stroke-width='1' stroke-linejoin='miter'/%3E%3C/svg%3E">
@@ -295,6 +295,7 @@
             <button class="tab" onclick="showPolicy('neuratabs')">NeuraTabs</button>
             <button class="tab" onclick="showPolicy('neurashot')">NeuraShot</button>
             <button class="tab" onclick="showPolicy('neurasonic')">NeuraSonic</button>
+                    <button class="tab" onclick="showPolicy('neurapulse')">NeuraPulse</button>
         </div>
 
         <!-- NeuraSave Policy -->
@@ -518,6 +519,46 @@
                 <p><em>Last Updated: September 2025</em></p>
                 <p>Privacy policy for NeuraSonic will be added here once provided.</p>
                 <p>For questions about privacy, please contact us at: <strong>info@neurabolt.ai</strong></p>
+            </div>
+        </div>
+
+        <!-- NeuraPulse Policy -->
+        <div id="neurapulse" class="policy-content">
+            <div class="policy-card">
+                <h1>Privacy Policy for NeuraPulse</h1>
+                <p><em>Last Updated: May 2026</em></p>
+
+                <h2>What NeuraPulse Does</h2>
+                <p>NeuraPulse delivers AI-powered daily industry briefings tailored to your professional role. It generates personalised news, trends, AI tool updates, and tactical advice using Claude (by Anthropic) with web search.</p>
+
+                <h2>What We Collect</h2>
+                <p><strong>Anonymous device identifier:</strong> When you first use NeuraPulse, we generate a random string ("fingerprint") stored locally via Chrome's storage API. This is not derived from personal information — it is randomly generated. We use it solely to associate your preferences, briefing history, and subscription status with your device.</p>
+                <p><strong>Role and preference data:</strong> We store the industry role you select and any additional roles. This data is associated with your anonymous identifier and used to generate relevant briefings.</p>
+                <p><strong>Feedback data:</strong> When you rate briefing items (up or down), we store this feedback to improve future briefing quality.</p>
+                <p><strong>Subscription data:</strong> If you purchase NeuraBolt Pro, Stripe (our payment processor) handles payment directly. We receive only your Stripe customer ID and subscription ID, linked to your anonymous identifier. We never see, store, or process credit card numbers, billing addresses, or payment details.</p>
+
+                <h2>What We Do Not Collect</h2>
+                <p>We do not collect your name, email address, IP address, browsing history, page content, cookies, or any personally identifiable information. We do not track which websites you visit. NeuraPulse does not read or modify the content of any web page you browse. We do not sell, rent, or share any data with third parties for advertising or marketing purposes.</p>
+
+                <h2>How We Use Your Data</h2>
+                <p>Your anonymous identifier and role preferences are used to generate AI-powered briefings tailored to your selected industry. Feedback data improves briefing quality. Subscription data determines whether Pro features should be unlocked.</p>
+
+                <h2>Third-Party Services</h2>
+                <p><strong>Anthropic (Claude API)</strong> — generates briefing content. Prompts contain your selected role and category only, not personal information.</p>
+                <p><strong>Stripe</strong> — processes NeuraBolt Pro payments. See <a href="https://stripe.com/privacy" target="_blank" style="color: var(--accent-blue);">stripe.com/privacy</a>.</p>
+                <p><strong>Supabase</strong> — stores anonymised user data and cached briefings. See <a href="https://supabase.com/privacy" target="_blank" style="color: var(--accent-blue);">supabase.com/privacy</a>.</p>
+                <p><strong>Vercel</strong> — hosts our serverless API. See <a href="https://vercel.com/legal/privacy-policy" target="_blank" style="color: var(--accent-blue);">vercel.com/legal/privacy-policy</a>.</p>
+
+                <h2>Data Storage & Retention</h2>
+                <p>Data is stored in Supabase (hosted PostgreSQL) accessed via Vercel serverless functions. Both operate in US data centres with industry-standard security. Briefing data is cached and refreshed daily. Your anonymous identifier is stored locally in Chrome's extension storage and on our servers. Uninstalling the extension deletes local data. Server-side data can be deleted on request.</p>
+
+                <h2>Data Deletion</h2>
+                <p>To request deletion of all server-side data associated with your anonymous identifier, contact us at <strong>privacy@neurabolt.com</strong> with your identifier (found in the extension's local storage under "np-fingerprint").</p>
+
+                <h2>Children's Privacy</h2>
+                <p>NeuraPulse is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+                <p>For questions about this policy, contact: <strong>privacy@neurabolt.com</strong></p>
             </div>
         </div>
     </div>
