@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - NeuraBolt</title>
-    <meta name="description" content="Privacy policies for NeuraBolt browser extensions - NeuraSave, NeuraTabs, NeuraShot, NeuraSonic, and NeuraPulse.">
+    <meta name="description" content="Privacy policies for NeuraBolt browser extensions - NeuraPulse, NeuraSave, NeuraSonic, NeuraShot, and NeuraTabs.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15 C30 15, 15 30, 15 50 C15 55, 16 60, 18 64 C18 68, 20 72, 23 75 C23 78, 25 81, 28 83 C32 86, 37 88, 42 88 L58 88 C63 88, 68 86, 72 83 C75 81, 77 78, 77 75 C80 72, 82 68, 82 64 C84 60, 85 55, 85 50 C85 30, 70 15, 50 15 Z' stroke='%230a84ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M50 15 C45 15, 40 17, 36 20 C38 18, 41 17, 44 17 C47 17, 50 18, 52 20 C54 18, 57 17, 60 17 C63 17, 66 18, 68 20 C64 17, 59 15, 54 15' stroke='%230a84ff' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M50 20 L50 85' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' opacity='0.3'/%3E%3Cpath d='M35 35 C32 38, 30 42, 30 46 C30 50, 32 54, 35 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M25 45 C23 48, 22 52, 22 56 C22 60, 23 64, 25 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M65 35 C68 38, 70 42, 70 46 C70 50, 68 54, 65 57' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M75 45 C77 48, 78 52, 78 56 C78 60, 77 64, 75 67' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M35 70 C38 73, 42 75, 46 75 L54 75 C58 75, 62 73, 65 70' stroke='%230a84ff' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M55 30 L45 50 L52 50 L45 70 L60 45 L53 45 L55 30 Z' fill='%230a84ff' stroke='%230a84ff' stroke-width='1' stroke-linejoin='miter'/%3E%3C/svg%3E">
@@ -291,44 +291,79 @@
         <p class="page-subtitle">Your privacy is our priority. Learn how each NeuraBolt extension handles your data.</p>
 
         <div class="tabs">
-            <button class="tab active" onclick="showPolicy('neurasave')">NeuraSave</button>
-            <button class="tab" onclick="showPolicy('neuratabs')">NeuraTabs</button>
-            <button class="tab" onclick="showPolicy('neurashot')">NeuraShot</button>
-            <button class="tab" onclick="showPolicy('neurasonic')">NeuraSonic</button>
-                    <button class="tab" onclick="showPolicy('neurapulse')">NeuraPulse</button>
+            <button class="tab active" onclick="showPolicy('neurapulse', this)">NeuraPulse</button>
+            <button class="tab" onclick="showPolicy('neurasave', this)">NeuraSave</button>
+            <button class="tab" onclick="showPolicy('neurasonic', this)">NeuraSonic</button>
+            <button class="tab" onclick="showPolicy('neurashot', this)">NeuraShot</button>
+            <button class="tab" onclick="showPolicy('neuratabs', this)">NeuraTabs</button>
+        </div>
+
+        <!-- NeuraPulse Policy -->
+        <div id="neurapulse" class="policy-content active">
+            <div class="policy-card">
+                <h1>Privacy Policy for NeuraPulse</h1>
+                <p><em>Last Updated: June 2026</em></p>
+
+                <h2>Overview</h2>
+                <p>NeuraPulse delivers AI-generated weekly industry briefings tailored to a job role you choose. This policy explains exactly what it does and doesn't do with your data.</p>
+
+                <h2>What We Process</h2>
+                <ul>
+                    <li><strong>The role you choose</strong> (e.g. "Music Producer") and any thumbs up/down feedback you give — sent to our server to generate and refine your briefing.</li>
+                    <li><strong>An anonymous device ID</strong> — a random string (no name, email, or device fingerprinting) used to remember your preferences and Pro status.</li>
+                    <li><strong>Your settings and cached briefings</strong> — stored locally in your browser.</li>
+                </ul>
+
+                <h2>What We DON'T Collect</h2>
+                <ul>
+                    <li>We do NOT read the pages you visit or your browsing history (NeuraPulse has no access to web pages).</li>
+                    <li>We do NOT collect your name, email, or location.</li>
+                    <li>We do NOT sell or share data, use it for advertising, or for creditworthiness/lending.</li>
+                </ul>
+
+                <h2>How Briefings Are Generated</h2>
+                <p>Briefings are generated on our server using Anthropic's Claude. Only the role and topic are included in the request — never personal data. All processing happens through our secure proxy over HTTPS.</p>
+
+                <h2>NeuraBolt Pro &amp; Payments</h2>
+                <p>Pro is unlocked with an anonymous device ID or a portable <strong>NB-XXXX-XXXX</strong> code. Payments are handled entirely by Stripe (<a href="https://stripe.com/privacy" target="_blank">Stripe's privacy policy</a>); the extension never sees your card or billing details.</p>
+
+                <h2>Your Rights &amp; Data Deletion</h2>
+                <p>Uninstalling the extension removes all locally stored data. Since we don't hold personal identifiers, there is no account to delete. For any request, contact <strong>info@neurabolt.ai</strong>.</p>
+
+                <h2>Compliance</h2>
+                <p>NeuraPulse complies with the Chrome Web Store Developer Program Policies, GDPR, and CCPA where applicable.</p>
+            </div>
         </div>
 
         <!-- NeuraSave Policy -->
-        <div id="neurasave" class="policy-content active">
+        <div id="neurasave" class="policy-content">
             <div class="policy-card">
                 <h1>Privacy Policy for NeuraSave</h1>
-                <p><em>Last Updated: September 2025</em></p>
+                <p><em>Last Updated: June 2026</em></p>
 
                 <h2>Overview</h2>
                 <p>NeuraSave ("we", "our", or "the extension") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our browser extension.</p>
 
                 <h2>Information We Collect</h2>
 
-                <h3>Information You Provide</h3>
+                <h3>Stored Locally on Your Device</h3>
                 <ul>
-                    <li><strong>Email Address</strong>: Only collected if you choose to activate Pro features, used solely for subscription verification</li>
-                    <li><strong>Settings Preferences</strong>: Your chosen file formats, scaling options, and extension settings stored locally in your browser</li>
+                    <li><strong>Settings &amp; preferences</strong>: chosen file formats and options.</li>
+                    <li><strong>Daily download count</strong>: used to enforce the free-tier limit (resets daily).</li>
+                    <li><strong>Anonymous device ID &amp; Pro status</strong>: a random string (no email, no fingerprinting) and whether Pro is active.</li>
                 </ul>
 
-                <h3>Automatically Collected Information</h3>
+                <h3>Sent to Our Server (Only When You Act)</h3>
                 <ul>
-                    <li><strong>Download Count</strong>: Number of images downloaded (stored locally, reset daily)</li>
-                    <li><strong>Extension State</strong>: Whether the extension is enabled or disabled</li>
-                    <li><strong>Pro Status</strong>: Whether you have an active Pro subscription</li>
+                    <li><strong>AI Upscale (Pro):</strong> when you choose to upscale a specific image, the URL of <em>that single image</em> is sent to our proxy, which forwards it to Replicate to produce a higher-resolution copy (capped at 30/month). No other images or page data are sent.</li>
+                    <li><strong>Pro checks:</strong> your anonymous device ID or NB-XXXX-XXXX code is sent to verify Pro status. No email is sent by the extension.</li>
                 </ul>
 
                 <h2>How We Use Information</h2>
-                <p>We use the collected information to:</p>
                 <ul>
-                    <li>Verify Pro subscription status when you provide your email</li>
-                    <li>Save your preferences for a better user experience</li>
-                    <li>Track daily download limits (stored locally only)</li>
-                    <li>Provide and improve extension functionality</li>
+                    <li>Verify Pro status (anonymous ID or Pro code).</li>
+                    <li>Save your preferences and enforce daily free limits (locally).</li>
+                    <li>Perform an AI upscale on an image you explicitly choose.</li>
                 </ul>
 
                 <h2>Data Storage</h2>
@@ -341,8 +376,8 @@
                 <h2>Information We DON'T Collect</h2>
                 <ul>
                     <li>Browsing history or activity</li>
-                    <li>Content of images you download</li>
-                    <li>Personal information beyond email (for Pro users only)</li>
+                    <li>The contents of pages you visit (scanning is local and only on your click)</li>
+                    <li>Your name, email, or any personally identifying information</li>
                     <li>Analytics or tracking data</li>
                     <li>Cookies or similar tracking technologies</li>
                 </ul>
@@ -358,9 +393,9 @@
 
                 <h3>API Services</h3>
                 <ul>
-                    <li>Pro subscription verification uses our secure API hosted on Vercel</li>
-                    <li>Only your email is sent to verify subscription status</li>
-                    <li>No other personal data is transmitted</li>
+                    <li>Pro verification and AI Upscale use our secure proxy hosted on Vercel.</li>
+                    <li>Only your anonymous device ID / Pro code (for checks) or a single chosen image URL (for upscale) is sent — never your email.</li>
+                    <li>AI Upscale is performed by Replicate; the image URL is processed solely to return the upscaled result.</li>
                 </ul>
 
                 <h2>Data Security</h2>
@@ -401,7 +436,7 @@
                 <ol>
                     <li>Uninstall the extension from your browser</li>
                     <li>This will automatically remove all locally stored data</li>
-                    <li>Pro users can contact support to remove email from our verification system</li>
+                    <li>For any other request, contact info@neurabolt.ai</li>
                 </ol>
 
                 <p><em>By using NeuraSave, you agree to this Privacy Policy.</em></p>
@@ -412,10 +447,10 @@
         <div id="neuratabs" class="policy-content">
             <div class="policy-card">
                 <h1>NeuraTabs Privacy Policy</h1>
-                <p><em>Last Updated: September 2025</em></p>
+                <p><em>Last Updated: June 2026</em></p>
 
                 <h2>Your Privacy is Our Priority</h2>
-                <p>NeuraTabs processes all your data locally on your device. We do not collect, store, or transmit your personal information or browsing data to any external servers.</p>
+                <p>NeuraTabs organizes your tabs on your device. Your tab titles, full URLs, and browsing history never leave your computer. The only thing that can leave your device is anonymous and one-way hashed: when you deliberately correct a site's category, a hash of the domain (not the domain itself) is shared to improve grouping for everyone — and you can turn that off.</p>
 
                 <h2>What Information We Process</h2>
 
@@ -426,10 +461,13 @@
                     <li><strong>Snooze Settings:</strong> Information about tabs you've snoozed for later</li>
                 </ul>
 
-                <h3>Optional Features</h3>
+                <h3>Shared Category Learning (Anonymous &amp; Hashed)</h3>
+                <p>When you <em>deliberately correct</em> a site's category, NeuraTabs can contribute that to a shared "category brain" so grouping improves for everyone. This is done in a privacy-preserving way:</p>
                 <ul>
-                    <li><strong>OpenAI Integration (Optional):</strong> If you choose to use AI features, you provide your own OpenAI API key. When enabled, only tab titles and domains are sent to OpenAI's servers using your personal API key. We never see or store your API key.</li>
-                    <li><strong>Community Mappings:</strong> Anonymous domain-to-category mappings (e.g., "spotify.com" → "Music") may be shared with our community database to improve categorization for all users. This data contains no personal information.</li>
+                    <li><strong>Only one-way hashes are sent</strong> — a SHA-256 hash of the domain (never the domain itself) and the category you chose. Our server never holds a readable list of the sites you use.</li>
+                    <li><strong>Unlinkable votes</strong> — instead of a device ID, each vote carries a per-site token (a hash of your random device id combined with that domain). This counts one vote per device per site while making your corrections impossible to link across different sites or back to you.</li>
+                    <li><strong>Only deliberate corrections</strong> — the sites you simply visit are never sent. A site only becomes a shared suggestion after at least 3 devices agree (60%+).</li>
+                    <li><strong>Opt-out anytime</strong> — turn off contributing in Settings; removing a learned site or tapping Undo also retracts your vote.</li>
                 </ul>
 
                 <h2>What We DON'T Do</h2>
@@ -439,7 +477,7 @@
                     <li>❌ We do NOT sell any data to third parties</li>
                     <li>❌ We do NOT use your data for advertising</li>
                     <li>❌ We do NOT use your data for creditworthiness or lending purposes</li>
-                    <li>❌ We do NOT have access to your OpenAI API key or AI queries</li>
+                    <li>❌ We do NOT use any AI service for grouping — categorization is 100% on-device</li>
                 </ul>
 
                 <h2>Data Storage</h2>
@@ -452,32 +490,30 @@
                     <li>Is never accessible to us or any third party</li>
                 </ul>
 
-                <h3>Community Database (Anonymous)</h3>
-                <p>Our optional community features use a Supabase database that stores only:</p>
+                <h3>Shared Category Database (Anonymous &amp; Hashed)</h3>
+                <p>The shared category brain stores only:</p>
                 <ul>
-                    <li>Domain names and their categories (e.g., "github.com" → "Dev")</li>
-                    <li>Vote counts for categorization accuracy</li>
-                    <li>No user identifiers or personal information</li>
+                    <li>One-way <strong>hashes</strong> of domains and their agreed category (no plaintext domains)</li>
+                    <li>An unlinkable per-site vote token (no device identifier)</li>
+                    <li>Vote counts for consensus accuracy</li>
                 </ul>
 
                 <h2>Permissions We Request</h2>
                 <p>NeuraTabs requests the following Chrome permissions:</p>
                 <ul>
-                    <li><strong>tabs:</strong> To read tab information for organization</li>
-                    <li><strong>tabGroups:</strong> To create and manage tab groups</li>
-                    <li><strong>storage:</strong> To save your preferences locally</li>
+                    <li><strong>tabs:</strong> To read tab titles/URLs and organize them into groups</li>
+                    <li><strong>tabGroups:</strong> To create and manage native tab groups</li>
+                    <li><strong>storage:</strong> To save your preferences and learned categories locally</li>
                     <li><strong>alarms:</strong> To reopen snoozed tabs at scheduled times</li>
                     <li><strong>contextMenus:</strong> To add right-click menu options</li>
-                    <li><strong>host_permissions:</strong> To extract favicons and process tab content</li>
                 </ul>
+                <p>NeuraTabs requests <strong>no host permissions</strong> and never injects code into the pages you visit.</p>
 
                 <h2>NeuraBolt Pro</h2>
-                <p>If you subscribe to NeuraBolt Pro:</p>
                 <ul>
-                    <li>Payment is processed securely through Stripe</li>
-                    <li>We only store your email for subscription management</li>
-                    <li>Your payment information is never stored by us</li>
-                    <li>You can cancel anytime through Stripe's customer portal</li>
+                    <li>Pro is unlocked with an anonymous device ID or a portable NB-XXXX-XXXX code.</li>
+                    <li>Payment is processed securely by Stripe; we never store your payment details.</li>
+                    <li>The extension does not collect your email. You can cancel anytime via Stripe.</li>
                 </ul>
 
                 <h2>Your Rights</h2>
@@ -502,63 +538,77 @@
             </div>
         </div>
 
-        <!-- NeuraShot Policy (Placeholder) -->
+        <!-- NeuraShot Policy -->
         <div id="neurashot" class="policy-content">
             <div class="policy-card">
                 <h1>Privacy Policy for NeuraShot</h1>
-                <p><em>Last Updated: September 2025</em></p>
-                <p>Privacy policy for NeuraShot will be added here once provided.</p>
-                <p>For questions about privacy, please contact us at: <strong>info@neurabolt.ai</strong></p>
+                <p><em>Last Updated: June 2026</em></p>
+
+                <h2>Overview</h2>
+                <p>NeuraShot captures screenshots and records your screen. Everything you capture is processed and saved locally — nothing you capture is ever uploaded.</p>
+
+                <h2>What Stays on Your Device</h2>
+                <ul>
+                    <li><strong>All captures &amp; recordings:</strong> visible-area, full-page, region, and all-tabs screenshots, PDF exports, and screen recordings are created in your browser and saved straight to your Downloads folder.</li>
+                    <li><strong>Settings:</strong> your format and audio preferences, plus an anonymous device ID and Pro status, are stored locally.</li>
+                </ul>
+
+                <h2>What We DON'T Collect</h2>
+                <ul>
+                    <li>We do NOT upload your screenshots, recordings, or PDFs anywhere.</li>
+                    <li>We do NOT collect your browsing history, page contents, name, email, or location.</li>
+                    <li>We do NOT run analytics, tracking, or advertising, and we never sell data.</li>
+                </ul>
+
+                <h2>The Only Network Connection</h2>
+                <p>NeuraShot's single network call is a lightweight Pro licence check to our secure proxy, sending only your anonymous device ID or NB-XXXX-XXXX code. Recordings are saved as WebM and PDFs are generated on-device with a bundled library — no cloud services are used for capture.</p>
+
+                <h2>Permissions</h2>
+                <ul>
+                    <li><strong>activeTab / tabs / host access:</strong> to capture the page (and, for All Tabs, other tabs in the window) you choose.</li>
+                    <li><strong>downloads:</strong> to save captures to your Downloads folder.</li>
+                    <li><strong>offscreen:</strong> to run screen recording and PDF generation.</li>
+                    <li><strong>storage:</strong> to save preferences and Pro status locally.</li>
+                </ul>
+
+                <h2>Payments &amp; Contact</h2>
+                <p>Pro payments are handled by Stripe; the extension never sees your card details. Uninstalling removes all local data. Questions: <strong>info@neurabolt.ai</strong>. Complies with the Chrome Web Store policies, GDPR, and CCPA where applicable.</p>
             </div>
         </div>
 
-        <!-- NeuraSonic Policy (Placeholder) -->
+        <!-- NeuraSonic Policy -->
         <div id="neurasonic" class="policy-content">
             <div class="policy-card">
                 <h1>Privacy Policy for NeuraSonic</h1>
-                <p><em>Last Updated: September 2025</em></p>
-                <p>Privacy policy for NeuraSonic will be added here once provided.</p>
-                <p>For questions about privacy, please contact us at: <strong>info@neurabolt.ai</strong></p>
-            </div>
-        </div>
+                <p><em>Last Updated: June 2026</em></p>
 
-        <!-- NeuraPulse Policy -->
-        <div id="neurapulse" class="policy-content">
-            <div class="policy-card">
-                <h1>Privacy Policy for NeuraPulse</h1>
-                <p><em>Last Updated: May 2026</em></p>
+                <h2>Overview</h2>
+                <p>NeuraSonic boosts volume and shapes the sound of audio and video in your browser tabs. All audio processing happens entirely on your device — your audio never leaves your computer.</p>
 
-                <h2>What NeuraPulse Does</h2>
-                <p>NeuraPulse delivers AI-powered daily industry briefings tailored to your professional role. It generates personalised news, trends, AI tool updates, and tactical advice using Claude (by Anthropic) with web search.</p>
+                <h2>What Stays on Your Device</h2>
+                <ul>
+                    <li><strong>All audio processing:</strong> volume boost, 3-band EQ, compression, and stereo balance run locally using the browser's built-in Web Audio API.</li>
+                    <li><strong>Settings &amp; per-site profiles:</strong> your preferences (and optional per-website sound profiles keyed by hostname) are stored locally, along with an anonymous device ID and Pro status.</li>
+                </ul>
 
-                <h2>What We Collect</h2>
-                <p><strong>Anonymous device identifier:</strong> When you first use NeuraPulse, we generate a random string ("fingerprint") stored locally via Chrome's storage API. This is not derived from personal information — it is randomly generated. We use it solely to associate your preferences, briefing history, and subscription status with your device.</p>
-                <p><strong>Role and preference data:</strong> We store the industry role you select and any additional roles. This data is associated with your anonymous identifier and used to generate relevant briefings.</p>
-                <p><strong>Feedback data:</strong> When you rate briefing items (up or down), we store this feedback to improve future briefing quality.</p>
-                <p><strong>Subscription data:</strong> If you purchase NeuraBolt Pro, Stripe (our payment processor) handles payment directly. We receive only your Stripe customer ID and subscription ID, linked to your anonymous identifier. We never see, store, or process credit card numbers, billing addresses, or payment details.</p>
+                <h2>What We DON'T Collect</h2>
+                <ul>
+                    <li>We do NOT capture, record, upload, or transmit any audio.</li>
+                    <li>We do NOT collect your browsing history, page contents, name, email, or location.</li>
+                    <li>We do NOT run analytics, tracking, or advertising, and we never sell data.</li>
+                </ul>
 
-                <h2>What We Do Not Collect</h2>
-                <p>We do not collect your name, email address, IP address, browsing history, page content, cookies, or any personally identifiable information. We do not track which websites you visit. NeuraPulse does not read or modify the content of any web page you browse. We do not sell, rent, or share any data with third parties for advertising or marketing purposes.</p>
+                <h2>The Only Network Connection</h2>
+                <p>NeuraSonic's only network calls are Pro licence checks to our secure proxy, sending just your anonymous device ID or NB-XXXX-XXXX code — never any audio or page data, and never on page load.</p>
 
-                <h2>How We Use Your Data</h2>
-                <p>Your anonymous identifier and role preferences are used to generate AI-powered briefings tailored to your selected industry. Feedback data improves briefing quality. Subscription data determines whether Pro features should be unlocked.</p>
+                <h2>Permissions</h2>
+                <ul>
+                    <li><strong>activeTab / scripting / host access:</strong> to apply audio processing to the tab you choose (including media inside iframes).</li>
+                    <li><strong>storage:</strong> to save your settings, per-site profiles, and Pro status locally.</li>
+                </ul>
 
-                <h2>Third-Party Services</h2>
-                <p><strong>Anthropic (Claude API)</strong> — generates briefing content. Prompts contain your selected role and category only, not personal information.</p>
-                <p><strong>Stripe</strong> — processes NeuraBolt Pro payments. See <a href="https://stripe.com/privacy" target="_blank" style="color: var(--accent-blue);">stripe.com/privacy</a>.</p>
-                <p><strong>Supabase</strong> — stores anonymised user data and cached briefings. See <a href="https://supabase.com/privacy" target="_blank" style="color: var(--accent-blue);">supabase.com/privacy</a>.</p>
-                <p><strong>Vercel</strong> — hosts our serverless API. See <a href="https://vercel.com/legal/privacy-policy" target="_blank" style="color: var(--accent-blue);">vercel.com/legal/privacy-policy</a>.</p>
-
-                <h2>Data Storage & Retention</h2>
-                <p>Data is stored in Supabase (hosted PostgreSQL) accessed via Vercel serverless functions. Both operate in US data centres with industry-standard security. Briefing data is cached and refreshed daily. Your anonymous identifier is stored locally in Chrome's extension storage and on our servers. Uninstalling the extension deletes local data. Server-side data can be deleted on request.</p>
-
-                <h2>Data Deletion</h2>
-                <p>To request deletion of all server-side data associated with your anonymous identifier, contact us at <strong>privacy@neurabolt.com</strong> with your identifier (found in the extension's local storage under "np-fingerprint").</p>
-
-                <h2>Children's Privacy</h2>
-                <p>NeuraPulse is not directed at children under 13. We do not knowingly collect data from children.</p>
-
-                <p>For questions about this policy, contact: <strong>privacy@neurabolt.com</strong></p>
+                <h2>Payments &amp; Contact</h2>
+                <p>Pro payments are handled by Stripe; the extension never sees your card details. Uninstalling removes all local data. Questions: <strong>info@neurabolt.ai</strong>. Complies with the Chrome Web Store policies, GDPR, and CCPA where applicable.</p>
             </div>
         </div>
     </div>
@@ -568,23 +618,28 @@
     </footer>
 
     <script>
-        function showPolicy(extensionId) {
-            // Hide all policies
-            document.querySelectorAll('.policy-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected policy
-            document.getElementById(extensionId).classList.add('active');
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
+        function showPolicy(extensionId, tabEl) {
+            const target = document.getElementById(extensionId);
+            if (!target) return;
+
+            document.querySelectorAll('.policy-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+            target.classList.add('active');
+
+            // Highlight the matching tab (works for clicks and deep links).
+            const tab = tabEl || document.querySelector('.tab[onclick*="' + extensionId + '"]');
+            if (tab) tab.classList.add('active');
+
+            // Keep the URL in sync so each policy is directly linkable (e.g. /privacy#neuratabs).
+            if (history.replaceState) history.replaceState(null, '', '#' + extensionId);
         }
+
+        // Deep-link support: open the policy named in the URL hash on load.
+        document.addEventListener('DOMContentLoaded', function () {
+            const id = (location.hash || '').replace('#', '');
+            if (id && document.getElementById(id)) showPolicy(id);
+        });
     </script>
 </body>
 </html>
