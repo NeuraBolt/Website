@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service - NeuraBolt</title>
+<link rel="icon" type="image/png" href="/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#091324;--text:#fff;--text-soft:rgba(255,255,255,0.72);--text-dim:rgba(255,255,255,0.5);--blue:#4a90ff;--purple:#bd61ff;--card:rgba(255,255,255,0.035);--border:rgba(255,255,255,0.07);}
+html,body{min-height:100%;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(74,144,255,0.12),transparent 60%),radial-gradient(ellipse 70% 50% at 100% 100%,rgba(189,97,255,0.10),transparent 60%),linear-gradient(160deg,#091324 0%,#0b1730 55%,#091324 100%);}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.32;}
+.bg-orb-1{width:50vw;height:50vw;max-width:620px;max-height:620px;background:radial-gradient(circle,#4a90ff 0,transparent 70%);top:-18vw;right:-10vw;animation:drift1 26s ease-in-out infinite;}
+.bg-orb-2{width:46vw;height:46vw;max-width:560px;max-height:560px;background:radial-gradient(circle,#bd61ff 0,transparent 70%);bottom:-20vw;left:-12vw;animation:drift2 30s ease-in-out infinite;}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,40px) scale(1.08);}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-30px) scale(0.94);}}
+.nav{max-width:880px;margin:0 auto;padding:1.6rem 2rem 0;}
+.nav-brand{display:inline-flex;align-items:center;gap:0.7rem;text-decoration:none;}
+.nav-logo{width:42px;height:42px;border-radius:10px;box-shadow:0 0 22px rgba(74,144,255,0.4);}
+.nav-name{font-size:1.32rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(120deg,#4a90ff,#bd61ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.container{max-width:880px;margin:0 auto;padding:2rem 2rem 2.4rem;}
+.page-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-1px;margin-bottom:0.4rem;background:linear-gradient(120deg,#4a90ff,#8b7bff 50%,#bd61ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-subtitle{color:var(--text-soft);font-size:1.05rem;margin-bottom:1.8rem;}
+.tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.6rem;}
+.tab{font:inherit;font-size:0.9rem;font-weight:600;color:var(--text-soft);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:0.5rem 1.1rem;cursor:pointer;transition:all .15s ease;}
+.tab:hover{color:var(--text);border-color:rgba(74,144,255,0.4);}
+.tab.active{color:#fff;border-color:transparent;background:linear-gradient(120deg,#4a90ff,#bd61ff);}
+.policy-content{display:none;animation:fade .4s ease;}
+.policy-content.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.policy-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem 2rem;}
+.policy-card h1{font-size:1.6rem;font-weight:700;margin-bottom:0.4rem;}
+.policy-card h2{font-size:1.15rem;font-weight:650;margin:1.5rem 0 0.5rem;color:#fff;}
+.policy-card h3{font-size:1rem;font-weight:600;margin:1rem 0 0.4rem;color:var(--text);}
+.policy-card p,.policy-card li{color:var(--text-soft);font-size:0.95rem;margin-bottom:0.6rem;}
+.policy-card ul,.policy-card ol{padding-left:1.4rem;margin-bottom:0.6rem;}
+.policy-card li{margin-bottom:0.35rem;}
+.policy-card a{color:var(--blue);text-decoration:none;}
+.policy-card a:hover{text-decoration:underline;}
+.policy-card strong{color:#fff;}
+.footer{max-width:880px;margin:0 auto;padding:1.4rem 2rem 2.2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;font-size:0.78rem;color:var(--text-dim);}
+.footer-links a{color:var(--text-soft);text-decoration:none;margin-left:1.1rem;}
+.footer-links a:hover{color:var(--blue);}
+@media(max-width:560px){.nav,.container,.footer{padding-left:1.2rem;padding-right:1.2rem;}.footer{flex-direction:column;align-items:flex-start;}.footer-links a{margin-left:0;margin-right:1.1rem;}}
+</style>
+</head>
+<body>
+
+<div class="bg"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div></div>
+
+<nav class="nav">
+    <a class="nav-brand" href="/">
+        <img class="nav-logo" src="/logo.png" alt="NeuraBolt logo">
+        <span class="nav-name">NeuraBolt</span>
+    </a>
+</nav>
+
+    <div class="container">
+        <h1 class="page-title">Terms of Service</h1>
+        <p class="page-subtitle">The terms that apply when you use NeuraBolt extensions.</p>
+
+        <div class="policy-content active"><div class="policy-card">
+
+                <p><em>Last Updated: June 2026</em></p>
+                <h2>1. Agreement</h2>
+                <p>These Terms govern your use of the NeuraBolt browser extensions — NeuraPulse, NeuraSave, NeuraSonic, NeuraShot, and NeuraTabs ("the Extensions") and the NeuraBolt website. By installing or using an Extension, you agree to these Terms. If you do not agree, please do not use the Extensions.</p>
+                <h2>2. The Service</h2>
+                <p>The Extensions are browser tools that run in your web browser. Most features run entirely on your device. Some features connect to our secure proxy (for Pro verification, AI briefings, or AI image upscaling) as described in our <a href="/privacy">Privacy Policy</a>.</p>
+                <h2>3. NeuraBolt Pro &amp; Billing</h2>
+                <ul>
+                    <li>NeuraBolt Pro is an optional subscription that unlocks premium features across the suite for one price.</li>
+                    <li>Payments are processed by Stripe. Pricing and billing interval are shown at checkout (currently &pound;0.99/month).</li>
+                    <li>Subscriptions renew automatically until cancelled. You can cancel anytime; access continues until the end of the current billing period.</li>
+                    <li>A Pro licence is for personal use and unlocks Pro across NeuraBolt extensions via your NB-XXXX-XXXX code.</li>
+                    <li>Some Pro features that use paid AI services are subject to fair-use caps (e.g. monthly limits), shown in the Extension.</li>
+                </ul>
+                <h2>4. Acceptable Use</h2>
+                <p>You agree not to misuse the Extensions, including: reverse-engineering for malicious purposes, attempting to bypass Pro licensing or usage limits, using the Extensions to infringe others' rights or to download content you are not permitted to, or disrupting our services.</p>
+                <h2>5. Intellectual Property</h2>
+                <p>The Extensions, branding, and website content are owned by NeuraBolt. You are granted a personal, non-exclusive, non-transferable licence to use the Extensions. Content you capture, download, or create with the Extensions remains yours.</p>
+                <h2>6. Disclaimers</h2>
+                <p>The Extensions are provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation. AI-generated content (e.g. briefings) may contain inaccuracies and should not be relied upon as professional advice.</p>
+                <h2>7. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, NeuraBolt is not liable for any indirect, incidental, or consequential damages arising from your use of the Extensions. Our total liability is limited to the amount you paid us in the 12 months before the claim.</p>
+                <h2>8. Changes</h2>
+                <p>We may update these Terms from time to time. Material changes will be posted here with a new "Last Updated" date. Continued use after changes means you accept the updated Terms.</p>
+                <h2>9. Contact</h2>
+                <p>Questions about these Terms? Email <strong>info@neurabolt.ai</strong>.</p>
+                <p style="margin-top:1.5rem;opacity:0.6;font-size:0.9em;"><em>This document is a general template and not legal advice; consider having it reviewed by a qualified professional for your jurisdiction.</em></p>
+        </div></div>
+    </div>
+
+    <footer class="footer">
+        <span>&copy; <span id="yr">2026</span> NeuraBolt. All rights reserved.</span>
+        <span class="footer-links"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></span>
+    </footer>
+
+    <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
